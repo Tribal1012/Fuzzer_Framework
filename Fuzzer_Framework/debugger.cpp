@@ -30,12 +30,7 @@ Debugger::Debugger() {
  *	
  */
 Debugger::~Debugger() {
-	if(isattached) 
-		DebugActiveProcessStop(TargetProcessInfo.dwProcessId);
-	else {
-		TerminateProcess(TargetProcessInfo.hProcess, 0);
-		CloseHandle(TargetProcessInfo.hProcess);
-	}
+	CloseProcess();
 }
 
 /*
@@ -62,7 +57,7 @@ bool Debugger::Open_Process(
 		printf("[+] cmd> %s %s\n", ApplicationName, CmdLine);
 	}
 	else {
-		puts("[-] CreateProcess() Error");
+		puts("[-] CreateProcess() Error\n");
 		return(false);
 	}
 
@@ -118,7 +113,7 @@ bool Debugger::Attach_Process(const unsigned int pid) {
 	CloseHandle(hSnapShot);
 
 	if(TargetProcessInfo.dwProcessId == 0) {
-		fprintf(stderr, "[-] This Process Not Found");
+		fprintf(stderr, "[-] This Process Not Found\n");
 		return(false);
 	}
 
@@ -127,13 +122,28 @@ bool Debugger::Attach_Process(const unsigned int pid) {
 		FALSE, 
 		TargetProcessInfo.dwProcessId);
 	if(hProcess == NULL) {
-		fprintf(stderr, "[-] OpenProcess Error...");
+		fprintf(stderr, "[-] OpenProcess Error...\n");
 		return(false);
 	}
 
 	TargetProcessInfo.hProcess = hProcess;
 	DebugActiveProcess(TargetProcessInfo.dwProcessId);
 	isattached = true;
+
+	return(true);
+}
+
+/*
+ *	CloseProcess()
+ *	Debugger와 연결된 Process 종료 
+ */
+bool Debugger::CloseProcess() {
+	if(isattached) 
+		DebugActiveProcessStop(TargetProcessInfo.dwProcessId);
+	else {
+		TerminateProcess(TargetProcessInfo.hProcess, 0);
+		CloseHandle(TargetProcessInfo.hProcess);
+	}
 
 	return(true);
 }
@@ -178,8 +188,37 @@ unsigned int Debugger::DebugStart() {
 		DebugEvent.dwThreadId, 
 		DBG_CONTINUE);
 
-	if(WaitForDebugEvent(&DebugEvent, 100) == NULL)
+	if(WaitForDebugEvent(&DebugEvent, 3000) == NULL)
 		return Err_Wait;
+
+	//test code
+    switch(DebugEvent.dwDebugEventCode)
+    {
+    //Create Process
+    case CREATE_PROCESS_DEBUG_EVENT:        //3
+        //Store Process Status
+		puts("CREATE_PROCESS_DEBUG_EVENT");
+        break;
+    //Exit Process
+    case EXIT_PROCESS_DEBUG_EVENT:        //5
+        puts("EXIT_PROCESS_DEBUG_EVENT");
+		break;
+    //Occur Debug Exception
+    case EXCEPTION_DEBUG_EVENT:            //1
+        switch(DebugEvent.u.Exception.ExceptionRecord.ExceptionCode)
+        {
+        //Single Step Execute
+        case EXCEPTION_SINGLE_STEP:
+			puts("EXCEPTION_SINGLE_STEP");
+            break;
+        //BreakPonint
+        case EXCEPTION_BREAKPOINT:
+			puts("EXCEPTION_BREAKPOINT");
+            break;
+        default:
+            break;
+        }
+	}
 	/*
 	switch(DebugEvent.dwDebugEventCode) {
 	case EXCEPTION_DEBUG_EVENT:

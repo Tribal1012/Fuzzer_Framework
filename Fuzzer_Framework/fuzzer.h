@@ -4,10 +4,6 @@
 
 class Debugger {
 private:
-	STARTUPINFO ProcessWindowInfo;
-	PROCESS_INFORMATION TargetProcessInfo;
-	DEBUG_EVENT DebugEvent;
-	CONTEXT context;
 	#ifdef _WIN32
 		#ifdef _WIN64
 			BOOL isWow64Process;
@@ -17,11 +13,18 @@ private:
 	BOOL isattached;
 
 protected:
+	STARTUPINFO ProcessWindowInfo;
+	PROCESS_INFORMATION TargetProcessInfo;
+	DEBUG_EVENT DebugEvent;
+	CONTEXT context;
+
+protected:
 	bool Open_Process(
 		const LPCSTR ApplicationName, 
 		const LPSTR CmdLine);
 	virtual void ProcessView();
 	bool Attach_Process(const unsigned int pi);
+	bool CloseProcess();
 	bool SetSingleStep();
 	bool DelSingleStep();
 	virtual unsigned int DebugStart(void);
@@ -34,13 +37,13 @@ public:
 class Fuzzer: public Debugger
 {
 private:
-
+	bool Mutater();
 protected:
-	
+	virtual unsigned int DebugStart(void);
+
 public:
 	bool File_Fuzzer(char* FileName, char* arg);
-	bool File_Fuzzer(unsigned int pid);
-	bool Network_Fuzzer();
+	bool Network_Fuzzer(unsigned int pid);
 };
 
 #endif
