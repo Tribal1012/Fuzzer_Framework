@@ -4,7 +4,7 @@
 using namespace std;
 #define TEST_PROCESS "C:\\WINDOWS\\system32\\notepad.exe"
 #define TEST_CMDLINE NULL
-#define TEST_PID 11111
+#define TEST_PID 8076
 
 int main(int argc, char* argv[]) {
 	/*
@@ -13,10 +13,10 @@ int main(int argc, char* argv[]) {
 		return(-1);
 	}*/
 
-	Fuzzer file_fuzz;
+	//Fuzzer file_fuzz;
 	//Fuzzer network_fuzz;
 
-	file_fuzz.File_Fuzzer(TEST_PROCESS, TEST_CMDLINE);
+	//file_fuzz.File_Fuzzer(TEST_PROCESS, TEST_CMDLINE);
 	//network_fuzz.Network_Fuzzer(TEST_PID);
 
 	return(0);

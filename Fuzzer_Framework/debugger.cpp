@@ -93,10 +93,11 @@ void Debugger::ProcessView() {
  *	이미 실행된 프로세스를 attach
  *	성공 시 true, 실패 시 false 반환
  */
-bool Debugger::Attach_Process(const unsigned int pid) {
+bool Debugger::Attach_Process(const dword pid) {
 	HANDLE hSnapShot = INVALID_HANDLE_VALUE;
 	PROCESSENTRY32 ProcessEntry;
 	HANDLE hProcess;
+	dword dwsize = 0;
 
 	ProcessEntry.dwSize = sizeof(PROCESSENTRY32);
 	hSnapShot = CreateToolhelp32Snapshot(
@@ -116,7 +117,7 @@ bool Debugger::Attach_Process(const unsigned int pid) {
 		fprintf(stderr, "[-] This Process Not Found\n");
 		return(false);
 	}
-
+	
 	hProcess = OpenProcess(
 		PROCESS_ALL_ACCESS, 
 		FALSE, 
@@ -125,6 +126,9 @@ bool Debugger::Attach_Process(const unsigned int pid) {
 		fprintf(stderr, "[-] OpenProcess Error...\n");
 		return(false);
 	}
+	ZeroMemory(target_program, MAX_PATH);
+	dwsize = MAX_PATH;
+	QueryFullProcessImageName(hProcess, 0, target_program, (PDWORD)&dwsize);
 
 	TargetProcessInfo.hProcess = hProcess;
 	DebugActiveProcess(TargetProcessInfo.dwProcessId);
@@ -140,10 +144,10 @@ bool Debugger::Attach_Process(const unsigned int pid) {
 bool Debugger::CloseProcess() {
 	if(isattached) 
 		DebugActiveProcessStop(TargetProcessInfo.dwProcessId);
-	else {
+	else
 		TerminateProcess(TargetProcessInfo.hProcess, 0);
-		CloseHandle(TargetProcessInfo.hProcess);
-	}
+
+	CloseHandle(TargetProcessInfo.hProcess);
 
 	return(true);
 }
@@ -182,7 +186,7 @@ bool Debugger::DelSingleStep() {
  */
 #define Err_Wait 0xfffffff
 #define Sucess_Debug 0x0
-unsigned int Debugger::DebugStart() {
+dword Debugger::DebugStart() {
 	ContinueDebugEvent(
 		DebugEvent.dwProcessId, 
 		DebugEvent.dwThreadId, 

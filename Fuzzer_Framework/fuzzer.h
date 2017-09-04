@@ -2,6 +2,8 @@
 #define __FUZZER_H__
 #include <Windows.h>
 
+typedef unsigned int dword;
+
 class Debugger {
 private:
 	#ifdef _WIN32
@@ -17,17 +19,18 @@ protected:
 	PROCESS_INFORMATION TargetProcessInfo;
 	DEBUG_EVENT DebugEvent;
 	CONTEXT context;
+	char target_program[MAX_PATH];
 
 protected:
 	bool Open_Process(
 		const LPCSTR ApplicationName, 
 		const LPSTR CmdLine);
 	virtual void ProcessView();
-	bool Attach_Process(const unsigned int pi);
+	bool Attach_Process(const dword pi);
 	bool CloseProcess();
 	bool SetSingleStep();
 	bool DelSingleStep();
-	virtual unsigned int DebugStart(void);
+	virtual dword DebugStart(void);
 
 public:
 	Debugger();
@@ -37,13 +40,21 @@ public:
 class Fuzzer: public Debugger
 {
 private:
-	bool Mutater();
+	char file_ext[_MAX_EXT];
+	char orig_path[MAX_PATH];
+	char mutated_path[MAX_PATH];
+	char result_path[MAX_PATH];
+	dword crash;
+	dword timeout;		// ms
+
 protected:
-	virtual unsigned int DebugStart(void);
+	virtual dword DebugStart(void);
+	bool Mutater();
 
 public:
-	bool File_Fuzzer(char* FileName, char* arg);
-	bool Network_Fuzzer(unsigned int pid);
+	Fuzzer();
+	bool File_Fuzzer();
+	bool Network_Fuzzer(dword pid);
 };
 
 #endif
