@@ -1,17 +1,30 @@
 #include <cstdio>
-#include "include\yaml-cpp\yaml.h"
 #include <Windows.h>
+#include <iostream>
+#include <fstream>
+#include <regex>
 #include "fuzzer.h"
 
 using namespace std;
 
 Fuzzer::Fuzzer() {
-	memset(file_ext, 0, _MAX_EXT);
-	memset(orig_path, 0, MAX_PATH);
-	memset(mutated_path, 0, MAX_PATH);
-	memset(result_path, 0, MAX_PATH);
-	crash = 0;
-	timeout = 5000;
+	dword fsize = 0;
+	ifstream ifs("./test.yaml");
+	string fdata;
+	if(ifs.is_open()) {
+		ifs >> fdata;
+		ifs.close();
+
+		regex reg("^():()");
+		smatch m;
+
+		memset(file_ext, 0, _MAX_EXT);
+		memset(orig_path, 0, MAX_PATH);
+		memset(mutated_path, 0, MAX_PATH);
+		memset(result_path, 0, MAX_PATH);
+		crash = 0;
+		timeout = 5000;
+	}
 }
 
 bool Fuzzer::Mutater() {
@@ -23,9 +36,9 @@ bool Fuzzer::File_Fuzzer() {
 
 	while(!isstop) {
 		Mutater();
-		Open_Process(target_program, mutated_path);
+		//Open_Process(target_program, mutated_path);
 		while(!DebugStart());
-		CloseProcess();
+		//CloseProcess();
 		break;
 	}
 

@@ -13,10 +13,10 @@ int main(int argc, char* argv[]) {
 		return(-1);
 	}*/
 
-	//Fuzzer file_fuzz;
+	Fuzzer file_fuzz;
 	//Fuzzer network_fuzz;
 
-	//file_fuzz.File_Fuzzer(TEST_PROCESS, TEST_CMDLINE);
+	file_fuzz.File_Fuzzer();
 	//network_fuzz.Network_Fuzzer(TEST_PID);
 
 	return(0);

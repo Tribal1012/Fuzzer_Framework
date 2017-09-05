@@ -1,22 +1,14 @@
-﻿빌드 시작: 2017-09-04 오후 11:28:45
-     1>2 노드의 "C:\Users\Tribal\documents\visual studio 2010\Projects\Fuzzer_Framework\Fuzzer_Framework\Fuzzer_Framework.vcxproj" 프로젝트(build 대상)입니다.
+﻿빌드 시작: 2017-09-05 오후 4:38:30
+     1>2 노드의 "C:\Users\Tribal\Documents\Visual Studio 2010\Projects\Fuzzer_Framework\Fuzzer_Framework\Fuzzer_Framework.vcxproj" 프로젝트(build 대상)입니다.
      1>InitializeBuildStatus:
-         "Debug\Fuzzer_Framework.unsuccessfulbuild"에 연결(touching)하고 있습니다.
+         "AlwaysCreate"이(가) 지정되었기 때문에 "Debug\Fuzzer_Framework.unsuccessfulbuild"을(를) 만들고 있습니다.
        ClCompile:
          c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt fuzzer.cpp
          fuzzer.cpp
-     1>c:\program files (x86)\microsoft visual studio 10.0\vc\include\xutility(2227): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\xutility(2212) : 'std::_Copy_impl' 선언을 참조하십시오.
-                 c:\users\tribal\documents\visual studio 2010\projects\fuzzer_framework\fuzzer_framework\include\yaml-cpp\yaml-cpp\binary.h(32) : 컴파일 중인 함수 템플릿 인스턴스화 '_OutIt std::copy<const unsigned char*,unsigned char*>(_InIt,_InIt,_OutIt)'에 대한 참조를 확인하십시오.
-                 with
-                 [
-                     _OutIt=unsigned char *,
-                     _InIt=const unsigned char *
-                 ]
        ManifestResourceCompile:
          모든 출력이 최신 상태입니다.
        Link:
-         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tribal\documents\visual studio 2010\Projects\Fuzzer_Framework\Debug\Fuzzer_Framework.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "Debug/libyaml-cppmdd.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Fuzzer_Framework.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Tribal\documents\visual studio 2010\Projects\Fuzzer_Framework\Debug\Fuzzer_Framework.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tribal\documents\visual studio 2010\Projects\Fuzzer_Framework\Debug\Fuzzer_Framework.lib" /MACHINE:X86 Debug\Fuzzer_Framework.exe.embed.manifest.res
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tribal\Documents\Visual Studio 2010\Projects\Fuzzer_Framework\Debug\Fuzzer_Framework.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Fuzzer_Framework.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Tribal\Documents\Visual Studio 2010\Projects\Fuzzer_Framework\Debug\Fuzzer_Framework.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tribal\Documents\Visual Studio 2010\Projects\Fuzzer_Framework\Debug\Fuzzer_Framework.lib" /MACHINE:X86 Debug\Fuzzer_Framework.exe.embed.manifest.res
          Debug\debugger.obj
          Debug\fuzzer.obj
          Debug\test.obj
@@ -25,12 +17,12 @@
          모든 출력이 최신 상태입니다.
        LinkEmbedManifest:
          모든 출력이 최신 상태입니다.
-         Fuzzer_Framework.vcxproj -> C:\Users\Tribal\documents\visual studio 2010\Projects\Fuzzer_Framework\Debug\Fuzzer_Framework.exe
+         Fuzzer_Framework.vcxproj -> C:\Users\Tribal\Documents\Visual Studio 2010\Projects\Fuzzer_Framework\Debug\Fuzzer_Framework.exe
        FinalizeBuildStatus:
          "Debug\Fuzzer_Framework.unsuccessfulbuild" 파일을 삭제하고 있습니다.
          "Debug\Fuzzer_Framework.lastbuildstate"에 연결(touching)하고 있습니다.
-     1>"C:\Users\Tribal\documents\visual studio 2010\Projects\Fuzzer_Framework\Fuzzer_Framework\Fuzzer_Framework.vcxproj" 프로젝트를 빌드했습니다(build 대상).
+     1>"C:\Users\Tribal\Documents\Visual Studio 2010\Projects\Fuzzer_Framework\Fuzzer_Framework\Fuzzer_Framework.vcxproj" 프로젝트를 빌드했습니다(build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:02.48
+경과 시간: 00:00:02.07
