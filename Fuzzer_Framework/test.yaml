@@ -1,3 +1,4 @@
+id: gom
 ##############################################################################
 #
 # This file specifies the options that BFF will use to fuzz
@@ -17,7 +18,6 @@
 # Spawn program to click buttons
 ##############################################################################
 campaign: aa
-    id: gom
-    keep_heisenbugs: False
-    use_buttonclicker: False
-
+id: gom
+keep_heisenbugs: False
+use_buttonclicker: False

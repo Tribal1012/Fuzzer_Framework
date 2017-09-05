@@ -7,16 +7,27 @@
 
 using namespace std;
 
+#define BUF_SIZE 512
 Fuzzer::Fuzzer() {
-	dword fsize = 0;
 	ifstream ifs("./test.yaml");
-	string fdata;
+	char fdata[BUF_SIZE];
 	if(ifs.is_open()) {
-		ifs >> fdata;
-		ifs.close();
+		while (!ifs.eof()) {
+			memset(fdata, 0, BUF_SIZE);
+			ifs.getline(fdata, BUF_SIZE);
 
-		regex reg("^():()");
-		smatch m;
+			regex reg("^(\\w+?): (\\w+)");
+			string fdata_str = fdata;
+			smatch m;
+
+			bool ismatched = regex_search(fdata_str, m, reg);
+
+			if (ismatched) {
+				cout << m[1] << "+" << m[2] << endl;
+			}
+		}
+
+		ifs.close();
 
 		memset(file_ext, 0, _MAX_EXT);
 		memset(orig_path, 0, MAX_PATH);
