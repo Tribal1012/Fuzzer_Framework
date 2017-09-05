@@ -7,7 +7,7 @@
 using namespace std;
 
 /*
- *	Debugger32::Debugger()
+ *	Debugger::Debugger()
  *	초기화 수행
  */
 Debugger::Debugger() {

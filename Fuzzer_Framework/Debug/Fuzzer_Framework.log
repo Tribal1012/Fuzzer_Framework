@@ -1,3 +1,9 @@
-﻿  fuzzer.cpp
-  Fuzzer_Framework.vcxproj -> C:\Users\Tribal\Documents\Visual Studio 2015\Projects\Fuzzer_Framework\Debug\Fuzzer_Framework.exe
-  Fuzzer_Framework.vcxproj -> C:\Users\Tribal\Documents\Visual Studio 2015\Projects\Fuzzer_Framework\Debug\Fuzzer_Framework.pdb (Full PDB)
+﻿빌드 시작: 2017-09-06 오전 1:09:47
+     1>2 노드의 "C:\Users\Tribal\documents\visual studio 2010\Projects\Fuzzer_Framework\Fuzzer_Framework\Fuzzer_Framework.vcxproj" 프로젝트(build 대상)입니다.
+       프로젝트 파일에 ToolsVersion="14.0"이(가) 들어 있습니다. 이 도구 집합은 알 수 없거나 누락되었을 수 있습니다. 이 경우 적절한 버전의 MSBuild를 설치하여 이 문제를 해결할 수 있습니다. 그렇지 않으면 빌드가 정책상의 이유로 특정 ToolsVersion이 될 수 있습니다. 프로젝트에 ToolsVersion="4.0"이 들어 있는 것으로 간주합니다. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkId=291333을 참조하십시오.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Platforms\Win32\Microsoft.Cpp.Win32.Targets(518,5): error MSB8008: 지정된 플랫폼 도구 집합(v140)이 설치되지 않았거나 올바르지 않습니다. 지원되는 플랫폼 도구 집합 값이 선택되었는지 확인하십시오.
+     1>"C:\Users\Tribal\documents\visual studio 2010\Projects\Fuzzer_Framework\Fuzzer_Framework\Fuzzer_Framework.vcxproj" 프로젝트를 빌드했습니다(build 대상). - 실패
+
+빌드하지 못했습니다.
+
+경과 시간: 00:00:00.14

@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstring>
 #include <Windows.h>
 #include <iostream>
 #include <fstream>
@@ -8,6 +9,11 @@
 using namespace std;
 
 #define BUF_SIZE 512
+
+/*
+ *	Fuzzer::Fuzzer()
+ *	설정 파일을 읽어들여, 초기화 수행
+ */
 Fuzzer::Fuzzer() {
 	ifstream ifs("./test.yaml");
 	char fdata[BUF_SIZE];
@@ -23,25 +29,21 @@ Fuzzer::Fuzzer() {
 			bool ismatched = regex_search(fdata_str, m, reg);
 
 			if (ismatched) {
-				cout << m[1] << "+" << m[2] << endl;
+				else if(!strcmp(m[1], "result_path")) strncpy(result_path, m[2], MAX_PATH-1);
+				else if(!strcmp(m[1], "crash")) crash = strtoul(m[2], &m[2], 10);
+				else if(!strcmp(m[1], "timeout")) timeout = (dword)(strtof(m[2], &m[2]) * 100);
 			}
 		}
 
 		ifs.close();
-
-		memset(file_ext, 0, _MAX_EXT);
-		memset(orig_path, 0, MAX_PATH);
-		memset(mutated_path, 0, MAX_PATH);
-		memset(result_path, 0, MAX_PATH);
-		crash = 0;
-		timeout = 5000;
 	}
 }
 
-bool Fuzzer::Mutater() {
-	return(true);
-}
-
+/*
+ *	File_Fuzzer()
+ *	파일 퍼징 수행
+ *	정상 종료 : true, 비정상 종료 : false
+ */
 bool Fuzzer::File_Fuzzer() {
 	bool isstop = false;
 
@@ -56,22 +58,27 @@ bool Fuzzer::File_Fuzzer() {
 	return(true);
 }
 
-bool Fuzzer::Network_Fuzzer(dword pid) {
-	bool isstop = false;
-
-	while(!isstop) {
-		if(!Attach_Process(pid)) {
-			fprintf(stderr, "[-] Program Attach failed.\n");
-			break;
-		}
-		while(!DebugStart());
-		CloseProcess();
-		break;
-	}
+/*
+ *	Check_Server_Crash()
+ *	서버의 크래시 체크
+ *	정상 종료 : true, 비정상 종료 : false
+ */
+bool Fuzzer::Check_Server_Crash() {
+	
 
 	return(true);
 }
 
+/*
+ *	Network_Fuzzer()
+ *	네트워크 패킷 퍼저
+ *	정상 종료 : true, 비정상 종료 : false
+ */
+bool Fuzzer::Network_Fuzzer() {
+	
+
+	return(true);
+}
 /*
  *	DebugStart()
  *	실행된 또는 Attached Process Debug 수행 

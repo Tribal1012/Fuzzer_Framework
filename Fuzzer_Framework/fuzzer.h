@@ -2,7 +2,7 @@
 #define __FUZZER_H__
 #include <Windows.h>
 
-typedef unsigned int dword;
+typedef unsigned long dword;
 
 class Debugger {
 private:
@@ -37,24 +37,41 @@ public:
 	~Debugger();
 };
 
-class Fuzzer: public Debugger
+class Mutator
 {
 private:
-	char file_ext[_MAX_EXT];
-	char orig_path[MAX_PATH];
-	char mutated_path[MAX_PATH];
+
+protected:
+	char	orig_path[MAX_PATH];
+	char**	orig_file_list;
+	char	mutated_path[MAX_PATH];
+	char	file_name[_MAX_FNAME];
+	char	file_ext[_MAX_EXT];
+
+public:
+	Mutator();
+	dword GetFileList();
+	unsigned int GenRandomValue();
+	bool Mutation(char* data, dword dsize);
+	~Mutator();
+}
+
+class Fuzzer: public Debugger, Mutator
+{
+private:
 	char result_path[MAX_PATH];
 	dword crash;
 	dword timeout;		// ms
+	bool isconfigured;
 
 protected:
 	virtual dword DebugStart(void);
-	bool Mutater();
 
 public:
 	Fuzzer();
 	bool File_Fuzzer();
-	bool Network_Fuzzer(dword pid);
+	bool Check_Server_Crash();
+	bool Network_Fuzzer();
 };
 
 #endif
