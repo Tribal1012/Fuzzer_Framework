@@ -1,23 +1,10 @@
-id: gom
-##############################################################################
-#
-# This file specifies the options that BFF will use to fuzz
-#   Comments are specified by the "#" character
-#
 ##############################################################################
 # FUZZ CAMPAIGN SETTINGS
-#
-# id:
-# used for identifying campaign, placement of results
-#
-# keep_heisenbugs:
-# Keep crashing testcases detected by the Windows XP hook, but not when run
-# via the debugger. This option is ignored on non-XP platforms.
-#
-# use_buttonclicker:
-# Spawn program to click buttons
 ##############################################################################
-campaign: aa
-id: gom
-keep_heisenbugs: False
-use_buttonclicker: False
+orig_path: C:\Users\Tribal\Documents\Visual Studio 2015\Projects\Fuzzer_Framework\Fuzzer_Framework\original
+mutated_path: C:\Users\Tribal\Documents\Visual Studio 2015\Projects\Fuzzer_Framework\Fuzzer_Framework\mutated
+result_path: C:\Program Files (x86)
+
+crash: 10
+timeout: 5
+

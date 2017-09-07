@@ -1,0 +1,28 @@
+﻿  debugger.cpp
+debugger.cpp(55): error C2664: 'BOOL CreateProcessW(LPCWSTR,LPWSTR,LPSECURITY_ATTRIBUTES,LPSECURITY_ATTRIBUTES,BOOL,DWORD,LPVOID,LPCWSTR,LPSTARTUPINFOW,LPPROCESS_INFORMATION)': 인수 1을(를) 'const LPCSTR'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+  debugger.cpp(55): note: 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+debugger.cpp(85): warning C4477: 'printf' : 서식 문자열 '%s'에 'char *' 형식의 인수가 필요하지만 variadic 인수 2의 형식이 'WCHAR *'입니다.
+  debugger.cpp(85): note: 서식 문자열에서 '%ls'을(를) 사용하는 것이 좋습니다.
+  debugger.cpp(85): note: 서식 문자열에서 '%lls'을(를) 사용하는 것이 좋습니다.
+  debugger.cpp(85): note: 서식 문자열에서 '%Ls'을(를) 사용하는 것이 좋습니다.
+  debugger.cpp(85): note: 서식 문자열에서 '%ws'을(를) 사용하는 것이 좋습니다.
+debugger.cpp(131): error C2664: 'BOOL QueryFullProcessImageNameW(HANDLE,DWORD,LPWSTR,PDWORD)': 인수 3을(를) 'char [260]'에서 'LPWSTR'(으)로 변환할 수 없습니다.
+  debugger.cpp(131): note: 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+debugger.cpp(109): warning C4477: 'printf' : 서식 문자열 '%s'에 'char *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'WCHAR *'입니다.
+  debugger.cpp(109): note: 서식 문자열에서 '%ls'을(를) 사용하는 것이 좋습니다.
+  debugger.cpp(109): note: 서식 문자열에서 '%lls'을(를) 사용하는 것이 좋습니다.
+  debugger.cpp(109): note: 서식 문자열에서 '%Ls'을(를) 사용하는 것이 좋습니다.
+  debugger.cpp(109): note: 서식 문자열에서 '%ws'을(를) 사용하는 것이 좋습니다.
+  fuzzer.cpp
+c:\users\tribal\documents\visual studio 2015\projects\fuzzer_framework\fuzzer_framework\SHA256.h(54): error C2040: 'ULONG_PTR': 'ULONG *'의 간접 참조 수준이 'unsigned long'과(와) 다릅니다.
+c:\users\tribal\documents\visual studio 2015\projects\fuzzer_framework\fuzzer_framework\SHA256.h(57): error C2040: 'UINT_PTR': 'UINT *'의 간접 참조 수준이 'unsigned int'과(와) 다릅니다.
+  mutator.cpp
+c:\users\tribal\documents\visual studio 2015\projects\fuzzer_framework\fuzzer_framework\SHA256.h(54): error C2040: 'ULONG_PTR': 'ULONG *'의 간접 참조 수준이 'unsigned long'과(와) 다릅니다.
+c:\users\tribal\documents\visual studio 2015\projects\fuzzer_framework\fuzzer_framework\SHA256.h(57): error C2040: 'UINT_PTR': 'UINT *'의 간접 참조 수준이 'unsigned int'과(와) 다릅니다.
+  SHA256.cpp
+  test.cpp
+c:\users\tribal\documents\visual studio 2015\projects\fuzzer_framework\fuzzer_framework\SHA256.h(54): error C2040: 'ULONG_PTR': 'ULONG *'의 간접 참조 수준이 'unsigned long'과(와) 다릅니다.
+c:\users\tribal\documents\visual studio 2015\projects\fuzzer_framework\fuzzer_framework\SHA256.h(57): error C2040: 'UINT_PTR': 'UINT *'의 간접 참조 수준이 'unsigned int'과(와) 다릅니다.
+  wellrandom.cpp
+c:\users\tribal\documents\visual studio 2015\projects\fuzzer_framework\fuzzer_framework\SHA256.h(54): error C2040: 'ULONG_PTR': 'ULONG *'의 간접 참조 수준이 'unsigned long'과(와) 다릅니다.
+c:\users\tribal\documents\visual studio 2015\projects\fuzzer_framework\fuzzer_framework\SHA256.h(57): error C2040: 'UINT_PTR': 'UINT *'의 간접 참조 수준이 'unsigned int'과(와) 다릅니다.

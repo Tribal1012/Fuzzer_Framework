@@ -18,6 +18,15 @@
     <ClInclude Include="fuzzer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="debugger.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="mutator.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="cryptohash.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp">
@@ -30,6 +39,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="mutator.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="wellrandom.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

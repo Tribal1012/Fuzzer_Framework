@@ -77,13 +77,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="cryptohash.h" />
+    <ClInclude Include="debugger.h" />
     <ClInclude Include="fuzzer.h" />
+    <ClInclude Include="mutator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debugger.cpp" />
     <ClCompile Include="fuzzer.cpp" />
     <ClCompile Include="mutator.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="wellrandom.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

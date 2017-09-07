@@ -22,16 +22,17 @@ Fuzzer::Fuzzer() {
 			memset(fdata, 0, BUF_SIZE);
 			ifs.getline(fdata, BUF_SIZE);
 
-			regex reg("^(\\w+?): (\\w+)");
+			regex reg("^(\\w+?): ([\\w:\\\\ ()]+)");
 			string fdata_str = fdata;
 			smatch m;
-
+			
 			bool ismatched = regex_search(fdata_str, m, reg);
 
 			if (ismatched) {
-				else if(!strcmp(m[1], "result_path")) strncpy(result_path, m[2], MAX_PATH-1);
-				else if(!strcmp(m[1], "crash")) crash = strtoul(m[2], &m[2], 10);
-				else if(!strcmp(m[1], "timeout")) timeout = (dword)(strtof(m[2], &m[2]) * 100);
+				char** dummy = NULL;
+				if(!strcmp(m[1].str().c_str(), "result_path")) strncpy_s(result_path, m[2].str().c_str(), MAX_PATH-1);
+				else if(!strcmp(m[1].str().c_str(), "crash")) crash = strtoul(m[2].str().c_str(), dummy, 10);
+				else if(!strcmp(m[1].str().c_str(), "timeout")) timeout = (dword)(strtof(m[2].str().c_str(), dummy) * 1000);
 			}
 		}
 
@@ -48,7 +49,7 @@ bool Fuzzer::File_Fuzzer() {
 	bool isstop = false;
 
 	while(!isstop) {
-		Mutater();
+		//Mutater();
 		//Open_Process(target_program, mutated_path);
 		while(!DebugStart());
 		//CloseProcess();

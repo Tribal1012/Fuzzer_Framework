@@ -2,7 +2,7 @@
 #include <cstring>
 #include <Windows.h>
 #include <TlHelp32.h>
-#include "fuzzer.h"
+#include "debugger.h"
 
 using namespace std;
 
@@ -43,7 +43,7 @@ bool Debugger::Open_Process(
 	const LPSTR CmdLine) 
 {
 	if(CreateProcess(
-		ApplicationName, 
+		ApplicationName,
 		CmdLine, 
 		NULL, 
 		NULL, 
@@ -128,7 +128,7 @@ bool Debugger::Attach_Process(const dword pid) {
 	}
 	ZeroMemory(target_program, MAX_PATH);
 	dwsize = MAX_PATH;
-	QueryFullProcessImageName(hProcess, 0, target_program, (PDWORD)&dwsize);
+	QueryFullProcessImageName(hProcess, 0, (LPSTR)target_program, (PDWORD)&dwsize);
 
 	TargetProcessInfo.hProcess = hProcess;
 	DebugActiveProcess(TargetProcessInfo.dwProcessId);
